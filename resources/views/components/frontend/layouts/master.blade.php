@@ -7,7 +7,7 @@
     {{-- <title>Advocate Nazmul Hossain | Senior Legal Consultant & Corporate Lawyer</title> --}}
     <title>Advocate Nazmul Hossain | Lawyer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('ui/frontend/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('ui/frontend/style.css') }}">
 </head>
 
 <body>
@@ -21,16 +21,12 @@
                 </a>
                 <div class="nav-links">
                     <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
-
                     <a href="{{ route('practice-areas') }}"
                         class="{{ request()->routeIs('practice-areas') ? 'active' : '' }}">Practice Areas</a>
-
                     <a href="{{ route('about-me') }}"
                         class="{{ request()->routeIs('about-me') ? 'active' : '' }}">About</a>
-
                     <a href="{{ route('fn-blogs') }}"
                         class="{{ request()->routeIs('fn-blogs') ? 'active' : '' }}">Blogs</a>
-
                     <a href="{{ route('contact') }}"
                         class="contact-cta {{ request()->routeIs('contact') ? 'active' : '' }}">
                         <i class="fas fa-phone"></i>
@@ -187,12 +183,59 @@
 
     <script>
         // Mobile menu functionality
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            const menuIcon = mobileMenuBtn.querySelector('i');
+
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('active');
+
+                // Toggle menu icon between bars and times
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.className = 'fas fa-times';
+                    mobileMenuBtn.style.background = 'var(--surface)';
+                } else {
+                    menuIcon.className = 'fas fa-bars';
+                    mobileMenuBtn.style.background = 'transparent';
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (navLinks.classList.contains('active') &&
+                    !navLinks.contains(e.target) &&
+                    !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    menuIcon.className = 'fas fa-bars';
+                    mobileMenuBtn.style.background = 'transparent';
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuIcon.className = 'fas fa-bars';
+                        mobileMenuBtn.style.background = 'transparent';
+                    }
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove('active');
+                    menuIcon.className = 'fas fa-bars';
+                    mobileMenuBtn.style.background = 'transparent';
+                }
+            });
         });
 
-        // Header scroll effect
+        // Header scroll effect (if you want to keep it)
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -200,16 +243,6 @@
             } else {
                 header.style.boxShadow = 'none';
             }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
     </script>
 </body>
