@@ -32,9 +32,26 @@ Route::resource('blogs', BlogController::class);
 Route::resource('galleries', GalleryController::class);
 Route::resource('timelines', TimelineController::class);
 
+// frontend starts
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+Route::get('/fn-blogs', function () {
+    return view('blogs');
+})->name('fn-blogs');
+Route::get('/about-me', function () {
+    return view('about-me');
+})->name('about-me');
+Route::get('/practice-areas', function () {
+    return view('practice-areas');
+})->name('practice-areas');
+Route::get('/practice-area-details', function () {
+    return view('practice-area-details');
+})->name('practice-area-details');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+// frontend ends
 
 Route::get('/backend', function () {
     return view('components.backend.layouts.master');

@@ -79,9 +79,9 @@
                                     <td class="px-6 py-4">${practiceArea.remarks ? practiceArea.remarks : 'No Data Found'}</td>
                                     <td class="px-6 py-4">
                                         <div class="flex justify-center">
-                                            <a href="/practiceAreas/${practiceArea.uuid}" class="px-1 text-blue-500 hover:text-blue-700" title="View"><i class="fas fa-eye"></i></a>
-                                            <a href="/practiceAreas/${practiceArea.uuid}/edit" class="px-1 text-yellow-500 hover:text-yellow-700" title="Edit"><i class="fas fa-edit"></i></a>
-                                            <form action="/practiceAreas/${practiceArea.uuid}" method="POST" onsubmit="return confirm('Move to trash?')">
+                                            <a href="/practice_areas/${practiceArea.uuid}" class="px-1 text-blue-500 hover:text-blue-700" title="View"><i class="fas fa-eye"></i></a>
+                                            <a href="/practice_areas/${practiceArea.uuid}/edit" class="px-1 text-yellow-500 hover:text-yellow-700" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <form action="/practice_areas/${practiceArea.uuid}" method="POST" onsubmit="return confirm('Move to trash?')">
                                                 <input type="hidden" name="_token" value="${csrfToken}">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="px-1 text-red-500 hover:text-red-700" title="Destroy">

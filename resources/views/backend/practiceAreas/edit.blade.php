@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <form action="{{ route('practiceAreas.update', $practiceArea->uuid) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('practice_areas.update', $practiceArea->uuid) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
