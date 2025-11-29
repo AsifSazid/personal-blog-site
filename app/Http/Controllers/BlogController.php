@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Tag;
 use App\Models\Category;
+use App\Models\PracticeArea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -21,7 +22,8 @@ class BlogController extends Controller
     {
         $tags = Tag::where('status', 1)->get();
         $categories = Category::where('status', 1)->get();
-        return view('backend.blogs.create', compact('tags', 'categories'));
+        $areas = PracticeArea::where('status', 1)->get();
+        return view('backend.blogs.create', compact('tags', 'categories', 'areas'));
     }
 
     public function store(Request $request)
@@ -68,7 +70,8 @@ class BlogController extends Controller
         $blog = Blog::where('uuid', $uuid)->firstOrFail();
         $tags = Tag::where('status', 1)->get();
         $categories = Category::where('status', 1)->get();
-        return view('backend.blogs.edit', compact('blog', 'tags', 'categories'));
+        $areas = PracticeArea::where('status', 1)->get();
+        return view('backend.blogs.edit', compact('blog', 'tags', 'categories', 'areas'));
     }
 
     public function update(Request $request, $uuid)

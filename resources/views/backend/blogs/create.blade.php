@@ -52,6 +52,18 @@
                 </select>
             </div>
 
+            <!-- Practice Area -->
+            <div class="mb-4">
+                <label for="tag_id" class="block text-sm font-medium text-gray-700">Practice Area</label>
+                <select name="tag_id" id="tag_id"
+                    class="mt-1 px-4 md:px-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">-- Select Area --</option>
+                    @foreach ($areas as $area)
+                        <option value="{{ $area->id }}">{{ $area->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <!-- Description -->
             <div class="mb-4">
                 <label for="description" class="block text-sm font-medium text-gray-700">Description</label>

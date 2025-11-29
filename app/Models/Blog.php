@@ -25,4 +25,9 @@ class Blog extends Model
     {
         return $this->belongsToMany(Tag::class, 'blog_tag');
     }
+
+    public function practiceAreas()
+    {
+        return $this->belongsToMany(PracticeArea::class, 'blog_practice_area');
+    }
 }
