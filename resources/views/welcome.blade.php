@@ -4,7 +4,7 @@
 
     <div class="victory-day-widget">
         <div class="bd-flag"></div>
-        <div class="victory-text">বিজয় দিবস ১৬ ডিসেম্বর</div>
+        <div class="victory-text">বিজয়ের মাস ডিসেম্বর</div>
         <div id="launch-point"
             style="position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); width: 1px; height: 1px;">
         </div>
