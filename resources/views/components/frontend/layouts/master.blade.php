@@ -8,6 +8,8 @@
     <title>Advocate Nazmul Hossain | Lawyer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('ui/frontend/style.css') }}">
+
+    @stack('css')
 </head>
 
 <body>
@@ -210,6 +212,8 @@
             </div>
         </div>
     </footer>
+
+    @stack('js')
 
     <script>
         // Mobile menu functionality

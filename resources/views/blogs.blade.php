@@ -4,8 +4,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Legal Insights & Articles</h1>
-                    <p>Expert analysis, legal updates, and practical advice on various legal matters</p>
+                    <h1>আইনি অন্তর্দৃষ্টি এবং প্রবন্ধ</h1>
+                    <p>বিভিন্ন আইনি বিষয়ে বিশেষজ্ঞ বিশ্লেষণ, আইনি আপডেট এবং ব্যবহারিক পরামর্শ</p>
                 </div>
             </div>
         </div>
