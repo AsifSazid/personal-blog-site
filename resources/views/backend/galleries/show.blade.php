@@ -57,9 +57,9 @@
                     <span class="px-4">Updated on: {{ $gallery->updated_at->format('d-M-Y H:i') }}</span>
                 </div>
                 <div>
-                    <a href="{{ route('galleries.index') }}" class="inline-block text-blue-600 hover:underline px-2">← Back to list</a>
-                    <a href="{{ route('galleries.edit', $gallery->uuid) }}" class="text-blue-600 hover:underline px-2">Edit</a>
-                    <form action="{{ route('galleries.destroy', $gallery->uuid) }}" method="POST" class="inline-block">
+                    <a href="{{ route('admin.galleries.index') }}" class="inline-block text-blue-600 hover:underline px-2">← Back to list</a>
+                    <a href="{{ route('admin.galleries.edit', $gallery->uuid) }}" class="text-blue-600 hover:underline px-2">Edit</a>
+                    <form action="{{ route('admin.galleries.destroy', $gallery->uuid) }}" method="POST" class="inline-block">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-600 hover:underline px-2"

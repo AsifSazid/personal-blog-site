@@ -5,21 +5,20 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <div class="hero-badges">
-                        <span class="hero-badge">20+ Years Experience</span>
-                        <span class="hero-badge">Senior Advocate</span>
-                        <span class="hero-badge">Supreme Court</span>
+                        <span class="hero-badge">৭+ বছরের অভিজ্ঞতা</span>
+                        <span class="hero-badge">সিনিয়র অ্যাডভোকেট</span>
+                        <span class="hero-badge">সুপ্রিম কোর্ট</span>
                     </div>
-                    <h1>Your Trusted Legal Partner for Complex Cases</h1>
-                    <p>Providing expert legal counsel and representation with integrity, dedication, and proven results
-                        in corporate law and civil litigation.</p>
+                    <h1>আইন, রাজনীতি এবং অধিকার</h1>
+                    <p>কর্পোরেট আইন এবং দেওয়ানি মামলা-মোকদ্দমায় সততা, নিষ্ঠা এবং প্রমাণিত ফলাফলের সাথে বিশেষজ্ঞ আইনি পরামর্শ এবং প্রতিনিধিত্ব প্রদান।</p>
                     <div class="hero-actions">
                         <a href="/contact" class="btn">
                             <i class="fas fa-calendar-check"></i>
-                            Schedule Consultation
+                            পরামর্শের জন্য সময় বুক করুন
                         </a>
                         <a href="/cases" class="btn btn-outline">
                             <i class="fas fa-gavel"></i>
-                            View Case Studies
+                            ব্লগ দেখুন
                         </a>
                     </div>
                 </div>
@@ -35,41 +34,21 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Expertise</span>
-                <h2 class="section-title">Practice Areas</h2>
-                <p class="section-subtitle">Comprehensive legal services tailored to your specific needs and objectives
-                </p>
+                <span class="section-tag">এক্সপার্টাইস</span>
+                <h2 class="section-title">আইনি সেবাসমূহ</h2>
+                <p class="section-subtitle">আপনার নির্দিষ্ট চাহিদা এবং উদ্দেশ্য অনুসারে তৈরি বিস্তৃত আইনি পরিষেবা</p>
             </div>
             <div class="practice-grid">
-                <div class="practice-card">
-                    <div class="practice-icon">
-                        <i class="fas fa-building"></i>
+                @foreach ($p_areas as $key => $p_area)
+                    <div class="practice-card">
+                        <div class="practice-icon">
+                            {!! $p_area->icon !!}
+                        </div>
+                        <h3 class="practice-title">{{$p_area->title}}</h3>
+                        <p class="practice-description">{{$p_area->description}}</p>
+                        <a href="/corporate-law" class="btn-secondary">আরো জানুন</a>
                     </div>
-                    <h3 class="practice-title">Corporate Law</h3>
-                    <p class="practice-description">Business formation, contracts, mergers & acquisitions, compliance,
-                        and corporate governance.</p>
-                    <a href="/corporate-law" class="btn-secondary">Learn More</a>
-                </div>
-
-                <div class="practice-card">
-                    <div class="practice-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3 class="practice-title">Real Estate Law</h3>
-                    <p class="practice-description">Property transactions, leasing agreements, land disputes, and real
-                        estate development.</p>
-                    <a href="/real-estate-law" class="btn-secondary">Learn More</a>
-                </div>
-
-                <div class="practice-card">
-                    <div class="practice-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3 class="practice-title">Employment Law</h3>
-                    <p class="practice-description">Labor disputes, employment contracts, workplace policies, and
-                        compliance matters.</p>
-                    <a href="/employment-law" class="btn-secondary">Learn More</a>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -78,10 +57,9 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Blogs</span>
-                <h2 class="section-title">Latest Legal Articles</h2>
-                <p class="section-subtitle">Stay updated with recent legal developments, case analysis, and legal advice
-                </p>
+                <span class="section-tag">ব্লগ</span>
+                <h2 class="section-title">সর্বশেষ আইনি প্রবন্ধ</h2>
+                <p class="section-subtitle">আইন সংক্রান্ত সাম্প্রতিক খবর, বিশ্লেষণ ও পরামর্শ</p>
             </div>
             <div class="blog-grid">
                 <!-- Blog Card 1 -->
@@ -106,9 +84,9 @@
     <section class="section" style="background: var(--surface);">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Success Stories</span>
-                <h2 class="section-title">Notable Case Studies</h2>
-                <p class="section-subtitle">Demonstrated excellence in achieving favorable outcomes for our clients</p>
+                <span class="section-tag">সফলতার গল্প</span>
+                <h2 class="section-title">সফল মামলা ও অভিজ্ঞতা</h2>
+                <p class="section-subtitle">আইনগত সাফল্যে আমাদের দক্ষতার প্রতিফলন</p>
             </div>
             <div class="cases-grid">
                 <div class="case-card">

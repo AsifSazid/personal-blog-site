@@ -42,6 +42,7 @@ class BlogController extends Controller
             'content' => $request->content,
             'category_id' => $request->category_id,
             'tag_id' => $request->tag_id,
+            'practice_id' => $request->practice_id,
             'status' => $request->status ?? 1,
             'remarks' => $request->remarks,
         ]);

@@ -16,9 +16,12 @@ return new class extends Migration
             $table->uuid('uuid')->unique();
             $table->string('title');
             $table->string('slug')->nullable();
+            $table->string('icon')->nullable();
             $table->text('description')->nullable();
             $table->boolean('status')->default(1);
+            $table->boolean('showing_at')->default(1);
             $table->text('remarks')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -15,22 +15,29 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="/" class="logo">
+                <a href="/" class="logo"
+                    style="display:flex; align-items:center; gap:10px; text-decoration:none;">
                     <i class="fas fa-balance-scale logo-icon"></i>
-                    Advocate Nazmul Hossain
+
+                    <span style="display:flex; flex-direction:column;">
+                        <strong>গাজী নাজমুল হোসেন</strong>
+                        <span style="font-size:12px; color:#666;">
+                            আইনজীবী, বাংলাদেশ সুপ্রিম কোর্ট
+                        </span>
+                    </span>
                 </a>
                 <div class="nav-links">
-                    <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+                    <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">হোম</a>
                     <a href="{{ route('practice-areas') }}"
-                        class="{{ request()->routeIs('practice-areas') ? 'active' : '' }}">Practice Areas</a>
+                        class="{{ request()->routeIs('practice-areas') ? 'active' : '' }}">আইনি সেবাসমূহ</a>
                     <a href="{{ route('about-me') }}"
-                        class="{{ request()->routeIs('about-me') ? 'active' : '' }}">About</a>
-                    <a href="{{ route('fn-blogs') }}"
-                        class="{{ request()->routeIs('fn-blogs') ? 'active' : '' }}">Blogs</a>
+                        class="{{ request()->routeIs('about-me') ? 'active' : '' }}">পরিচিতি</a>
+                    <a href="{{ route('blogs') }}"
+                        class="{{ request()->routeIs('blogs') ? 'active' : '' }}">ব্লগ</a>
                     <a href="{{ route('contact') }}"
                         class="contact-cta {{ request()->routeIs('contact') ? 'active' : '' }}">
                         <i class="fas fa-phone"></i>
-                        Free Consultation
+                        বিনামূল্যে পরামর্শ
                     </a>
                 </div>
                 <button class="mobile-menu-btn">
@@ -48,37 +55,38 @@
     <section class="section testimonials">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Client Reviews</span>
-                <h2 class="section-title">What Our Clients Say</h2>
-                <p class="section-subtitle">Trusted by businesses and individuals for reliable legal representation</p>
+                <span class="section-tag">ক্লায়েন্টের মতামত</span>
+                <h2 class="section-title">আমাদের ক্লায়েন্টরা কী বলেন</h2>
+                <p class="section-subtitle">বিশ্বস্ত আইনি প্রতিনিধিত্বের জন্য ব্যবসা ও ব্যক্তিদের আস্থা</p>
             </div>
+
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        "John's expertise in corporate law saved our business during a critical merger. His attention to
-                        detail and strategic approach were invaluable."
+                        "জনের কর্পোরেট আইনের দক্ষতা আমাদের ব্যবসা একটি গুরুত্বপূর্ণ মার্জারের সময় বাঁচিয়েছে। তার
+                        সূক্ষ্ম নজর এবং কৌশলগত দৃষ্টিভঙ্গি অমূল্য।"
                     </div>
                     <div class="testimonial-author">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
                             alt="Sarah Chen" class="author-avatar">
                         <div class="author-info">
-                            <h4>Sarah Chen</h4>
-                            <div class="author-role">CEO, Tech Innovations Inc.</div>
+                            <h4>সারা চেন</h4>
+                            <div class="author-role">সিইও, টেক ইনোভেশনস ইনক.</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        "Professional, knowledgeable, and truly dedicated to achieving the best outcome. I highly
-                        recommend Advocate Doe for any complex legal matter."
+                        "পেশাদার, জ্ঞানসম্পন্ন এবং সর্বোত্তম ফলাফল অর্জনে সত্যিই নিবেদিত। যেকোনো জটিল আইনি বিষয়ে
+                        আমি অ্যাডভোকেট ডোকে দৃঢ়ভাবে সুপারিশ করি।"
                     </div>
                     <div class="testimonial-author">
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
                             alt="Michael Rodriguez" class="author-avatar">
                         <div class="author-info">
-                            <h4>Michael Rodriguez</h4>
-                            <div class="author-role">Real Estate Developer</div>
+                            <h4>মাইকেল রোড্রিগেজ</h4>
+                            <div class="author-role">রিয়েল এস্টেট ডেভেলপার</div>
                         </div>
                     </div>
                 </div>
@@ -86,41 +94,50 @@
         </div>
     </section>
 
+
     <!-- CTA Section -->
     <section class="section">
         <div class="container">
             <div class="cta-section">
-                <h2>Ready to Protect Your Rights?</h2>
-                <p>Schedule a confidential consultation to discuss your legal needs and explore how we can help you
-                    achieve your objectives.</p>
+                <h2>আপনার অধিকার রক্ষার জন্য প্রস্তুত?</h2>
+                <p>আপনার আইনি প্রয়োজনগুলি আলোচনা করতে একটি গোপন পরামর্শের সময় নির্ধারণ করুন এবং দেখুন আমরা কীভাবে আপনাকে
+                    লক্ষ্য অর্জনে সাহায্য করতে পারি।</p>
                 <a href="/contact" class="btn btn-outline">
                     <i class="fas fa-phone"></i>
-                    Call Now: (555) 123-4567
+                    এখন কল করুন: (555) 123-4567
                 </a>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="/" class="logo">
+                    <a href="/" class="logo"
+                        style="display:flex; align-items:center; gap:10px; text-decoration:none;">
                         <i class="fas fa-balance-scale logo-icon"></i>
-                        Advocate Nazmul Hossain
+
+                        <span style="display:flex; flex-direction:column;">
+                            <strong>গাজী নাজমুল হোসেন</strong>
+                            <span style="font-size:12px; color:#666;">
+                                আইনজীবী, বাংলাদেশ সুপ্রিম কোর্ট
+                            </span>
+                        </span>
                     </a>
-                    <p class="footer-description">Providing exceptional legal services with integrity, expertise, and
-                        dedication to client success since 2003.</p>
+                    <p class="footer-description">২০১৮ সাল থেকে সততা, দক্ষতা ও মক্কেলদের সাফল্যের প্রতি নিবেদিত থেকে
+                        মানসম্মত আইনি সেবা প্রদান করে আসছি।</p>
 
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Legal Avenue, Suite 500, New York, NY 10001</span>
+                            <span>১২৩ লিগ্যাল অ্যাভিনিউ, স্যুট ৫০০, নিউইয়র্ক, এনওয়াই ১০০০১</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>(555) 123-4567</span>
+                            <span>(৫৫৫) ১২৩-৪৫৬৭</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -144,39 +161,52 @@
                 <div class="footer-column">
                     <h3>Practice Areas</h3>
                     <ul class="footer-links">
-                        <li><a href="/corporate-law">Corporate Law</a></li>
-                        <li><a href="/real-estate-law">Real Estate Law</a></li>
-                        <li><a href="/employment-law">Employment Law</a></li>
-                        <li><a href="/contract-law">Contract Law</a></li>
-                        <li><a href="/intellectual-property">IP Law</a></li>
+                        @if (!empty($practice_areas) && count($practice_areas) > 0)
+                            @foreach ($practice_areas as $practice_area)
+                                <li>
+                                    <a href="{{ url('/practice-area/' . $practice_area->slug) }}">
+                                        {{ $practice_area->title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        @else
+                            <li><a href="/corporate-law">Corporate Law</a></li>
+                            <li><a href="/real-estate-law">Real Estate Law</a></li>
+                            <li><a href="/employment-law">Employment Law</a></li>
+                            <li><a href="/contract-law">Contract Law</a></li>
+                            <li><a href="/intellectual-property">IP Law</a></li>
+                        @endif
+
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/cases">Case Studies</a></li>
-                        <li><a href="/blog">Blogs</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/">হোম</a></li>
+                        <li><a href="/about">পরিচিতি</a></li>
+                        <li><a href="/cases">কেইস স্ট্যাডি</a></li>
+                        <li><a href="/blog">ব্লগস</a></li>
+                        <li><a href="/contact">যোগাযোগ</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
-                    <h3>Legal</h3>
+                    <h3>আইনগত তথ্য</h3>
                     <ul class="footer-links">
-                        <li><a href="/privacy">Privacy Policy</a></li>
-                        <li><a href="/terms">Terms of Service</a></li>
-                        <li><a href="/disclaimer">Disclaimer</a></li>
+                        <li><a href="/privacy">গোপনীয়তা নীতি</a></li>
+                        <li><a href="/terms">সেবার শর্তাবলী</a></li>
+                        <li><a href="/disclaimer">দায়মুক্তি ঘোষণা</a></li>
                     </ul>
                 </div>
+
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2023 Advocate Nazmul Hossain. All rights reserved. The information on this website is for
-                    general
-                    information purposes only.</p>
+                <p>&copy; 2023 অ্যাডভোকেট নাজমুল হোসেন। সর্বস্বত্ব সংরক্ষিত। এই ওয়েবসাইটের তথ্য শুধুমাত্র সাধারণ তথ্যের
+                    উদ্দেশ্যে প্রদান করা হয়েছে।</p>
+                <span>Developed and Designed By: <a href="sazumme.com"
+                        style="text-decoration: none; color: #b55409">SazUmme Technology</a></span>
             </div>
         </div>
     </footer>

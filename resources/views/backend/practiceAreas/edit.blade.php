@@ -18,21 +18,32 @@
             </div>
         @endif
 
-        <form action="{{ route('practice_areas.update', $practiceArea->uuid) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.practice_areas.update', $practiceArea->uuid) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <!-- Title -->
             <div class="mb-4">
                 <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-                <input type="text" name="title" id="title" value="{{ old('title', $practiceArea->title) }}" required
+                <input type="text" name="title" id="title" value="{{ old('title', $practiceArea->title) }}"
+                    required
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
             </div>
 
             <!-- Slug -->
             <div class="mb-4">
                 <label for="slug" class="block text-sm font-medium text-gray-700">Alias</label>
-                <input type="text" name="slug" id="slug" value="{{ old('slug', $practiceArea->slug) }}" readonly
+                <input type="text" name="slug" id="slug" value="{{ old('slug', $practiceArea->slug) }}"
+                    readonly
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <!-- Icon -->
+            <div class="mb-4">
+                <label for="icon" class="block text-sm font-medium text-gray-700">Icon</label>
+                <input type="text" name="icon" id="icon" value="{{ old('icon', $practiceArea->icon) }}"
+                    required
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
             </div>
 
@@ -52,15 +63,38 @@
 
             <!-- Status -->
             <div class="mb-4 flex items-center gap-2">
-                <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                <label class="block text-sm font-medium text-gray-700">Status</label>
+
                 <div id="statusToggle" class="relative w-10 h-5 rounded-full cursor-pointer transition-colors">
-                    <div id="toggleKnob" class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all"></div>
+                    <div id="statusToggleKnob"
+                        class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all"></div>
                 </div>
+
                 <span id="statusText" class="text-xs font-medium text-gray-700">
                     {{ $practiceArea->status ? 'Active' : 'Inactive' }}
                 </span>
+
                 <input type="hidden" name="status" id="status" value="{{ $practiceArea->status ? '1' : '0' }}">
             </div>
+
+
+            <!-- Showing At -->
+            <div class="mb-4 flex items-center gap-2">
+                <label class="block text-sm font-medium text-gray-700">Showing At</label>
+
+                <div id="showingAtToggle" class="relative w-10 h-5 rounded-full cursor-pointer transition-colors">
+                    <div id="showingAtToggleKnob"
+                        class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all"></div>
+                </div>
+
+                <span id="showingAtText" class="text-xs font-medium text-gray-700">
+                    {{ $practiceArea->showing_at ? 'Active on First Page' : 'Inactive on First Page' }}
+                </span>
+
+                <input type="hidden" name="showingAt" id="showingAt"
+                    value="{{ $practiceArea->showing_at ? '1' : '0' }}">
+            </div>
+
 
             <div class="mt-6">
                 <button type="submit"
@@ -81,32 +115,52 @@
             });
 
             // Status toggle
-            const toggle = document.getElementById('statusToggle');
-            const knob = document.getElementById('toggleKnob');
+            const statusToggle = document.getElementById('statusToggle');
+            const statusKnob = document.getElementById('statusToggleKnob');
             const statusInput = document.getElementById('status');
             const statusText = document.getElementById('statusText');
 
-            // Initialize
-            if(statusInput.value === '1'){
-                knob.style.transform = 'translateX(24px)';
-                toggle.style.backgroundColor = '#22c55e';
+            // Init
+            if (statusInput.value === '1') {
+                statusKnob.style.transform = 'translateX(24px)';
+                statusToggle.style.backgroundColor = '#22c55e';
             } else {
-                knob.style.transform = 'translateX(0)';
-                toggle.style.backgroundColor = '#6b7280';
+                statusKnob.style.transform = 'translateX(0)';
+                statusToggle.style.backgroundColor = '#6b7280';
             }
 
-            toggle.addEventListener('click', () => {
-                if (statusInput.value === '1') {
-                    statusInput.value = '0';
-                    statusText.textContent = 'Inactive';
-                    knob.style.transform = 'translateX(0)';
-                    toggle.style.backgroundColor = '#6b7280';
-                } else {
-                    statusInput.value = '1';
-                    statusText.textContent = 'Active';
-                    knob.style.transform = 'translateX(24px)';
-                    toggle.style.backgroundColor = '#22c55e';
-                }
+            statusToggle.addEventListener('click', () => {
+                const active = statusInput.value === '1';
+                statusInput.value = active ? '0' : '1';
+                statusText.textContent = active ? 'Inactive' : 'Active';
+                statusKnob.style.transform = active ? 'translateX(0)' : 'translateX(24px)';
+                statusToggle.style.backgroundColor = active ? '#6b7280' : '#22c55e';
+            });
+
+
+            /* ========== SHOWING AT TOGGLE ========== */
+            const showingAtToggle = document.getElementById('showingAtToggle');
+            const showingAtKnob = document.getElementById('showingAtToggleKnob');
+            const showingAtInput = document.getElementById('showingAt');
+            const showingAtText = document.getElementById('showingAtText');
+
+            // Init
+            if (showingAtInput.value === '1') {
+                showingAtKnob.style.transform = 'translateX(24px)';
+                showingAtToggle.style.backgroundColor = '#22c55e';
+            } else {
+                showingAtKnob.style.transform = 'translateX(0)';
+                showingAtToggle.style.backgroundColor = '#6b7280';
+            }
+
+            showingAtToggle.addEventListener('click', () => {
+                const active = showingAtInput.value === '1';
+                showingAtInput.value = active ? '0' : '1';
+                showingAtText.textContent = active ?
+                    'Inactive on First Page' :
+                    'Active on First Page';
+                showingAtKnob.style.transform = active ? 'translateX(0)' : 'translateX(24px)';
+                showingAtToggle.style.backgroundColor = active ? '#6b7280' : '#22c55e';
             });
         </script>
     @endpush

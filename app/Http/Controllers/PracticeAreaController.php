@@ -31,11 +31,13 @@ class PracticeAreaController extends Controller
                 'title' => $request->title,
                 'slug' => \Str::slug($request->title),
                 'description' => $request->description,
+                'icon' => $request->icon,
                 'status' => $request->status ?? 1,
+                'showing_at' => $request->showingAt ?? 0,
                 'remarks' => $request->remarks,
             ]);
 
-            return redirect()->route('practiceAreas.index')->with('success', 'PracticeArea created successfully!');
+            return redirect()->route('admin.practice_areas.index')->with('success', 'PracticeArea created successfully!');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -65,12 +67,14 @@ class PracticeAreaController extends Controller
                 'title' => $request->title,
                 'slug' => \Str::slug($request->title),
                 'description' => $request->description,
+                'icon' => $request->icon,
                 'status' => $request->status ?? 1,
+                'showing_at' => $request->showingAt ?? 0,
                 'remarks' => $request->remarks,
                 'updated_by' => Auth::id(),
             ]);
 
-            return redirect()->route('practiceAreas.index')->with('success', 'PracticeArea updated successfully!');
+            return redirect()->route('admin.practice_areas.index')->with('success', 'PracticeArea updated successfully!');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -80,13 +84,13 @@ class PracticeAreaController extends Controller
     {
         $practiceArea = PracticeArea::where('uuid', $uuid)->firstOrFail();
         $practiceArea->delete();
-        return redirect()->route('practiceAreas.index')->with('success', 'PracticeArea moved to trash.');
+        return redirect()->route('admin.practice_areas.index')->with('success', 'PracticeArea moved to trash.');
     }
 
     public function trash()
     {
         $trashed = PracticeArea::onlyTrashed()->latest()->paginate(10);
-        return view('backend.practiceAreas.trash', compact('trashed'));
+        return view('admin.practice_areas.trash', compact('trashed'));
     }
 
     public function restore($uuid)

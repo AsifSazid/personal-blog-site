@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <form action="{{ route('practice_areas.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.practice_areas.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <!-- Title -->
@@ -32,6 +32,13 @@
             <div class="mb-4">
                 <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
                 <input type="text" name="slug" id="slug" readonly
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <!-- Icon -->
+            <div class="mb-4">
+                <label for="icon" class="block text-sm font-medium text-gray-700">Icon</label>
+                <input type="text" name="icon" id="icon" required
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
             </div>
 
@@ -52,11 +59,32 @@
             <!-- Status -->
             <div class="mb-4 flex items-center gap-2">
                 <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-                <div id="statusToggle" class="relative w-10 h-5 rounded-full bg-gray-300 cursor-pointer transition-colors">
-                    <div id="toggleKnob" class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all"></div>
+                <div id="statusToggle"
+                    class="relative w-10 h-5 rounded-full bg-green-500 cursor-pointer transition-colors">
+                    <div id="statusToggleKnob"
+                        class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all"
+                        style="transform: translateX(24px);"></div>
                 </div>
                 <span id="statusText" class="text-xs font-medium text-gray-700">Active</span>
                 <input type="hidden" name="status" id="status" value="1">
+            </div>
+
+            {{-- Showing Area --}}
+            <div class="mb-4 flex items-center gap-2">
+                <label class="block text-sm font-medium text-gray-700">Showing At</label>
+
+                <div id="showingAtToggle"
+                    class="relative w-10 h-5 rounded-full bg-gray-300 cursor-pointer transition-colors">
+                    <div id="showingAtToggleKnob"
+                        class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all">
+                    </div>
+                </div>
+
+                <span id="showingAtText" class="text-xs font-medium text-gray-700">
+                    Inactive on First Page
+                </span>
+
+                <input type="hidden" name="showingAt" id="showingAt" value="0">
             </div>
 
             <div class="mt-6">
@@ -78,22 +106,42 @@
             });
 
             // Status toggle
-            const toggle = document.getElementById('statusToggle');
-            const knob = document.getElementById('toggleKnob');
+            const statusToggle = document.getElementById('statusToggle');
+            const statusToggleKnob = document.getElementById('statusToggleKnob');
             const statusInput = document.getElementById('status');
             const statusText = document.getElementById('statusText');
 
-            toggle.addEventListener('click', () => {
+            statusToggle.addEventListener('click', () => {
                 if (statusInput.value === '1') {
                     statusInput.value = '0';
                     statusText.textContent = 'Inactive';
-                    knob.style.transform = 'translateX(0)';
-                    toggle.style.backgroundColor = '#6b7280';
+                    statusToggleKnob.style.transform = 'translateX(0)';
+                    statusToggle.style.backgroundColor = '#6b7280';
                 } else {
                     statusInput.value = '1';
                     statusText.textContent = 'Active';
-                    knob.style.transform = 'translateX(24px)';
-                    toggle.style.backgroundColor = '#22c55e';
+                    statusToggleKnob.style.transform = 'translateX(24px)';
+                    statusToggle.style.backgroundColor = '#22c55e';
+                }
+            });
+
+            // Showing At toggle
+            const showingAtToggle = document.getElementById('showingAtToggle');
+            const showingAtToggleKnob = document.getElementById('showingAtToggleKnob');
+            const showingAtInput = document.getElementById('showingAt');
+            const showingAtText = document.getElementById('showingAtText');
+
+            showingAtToggle.addEventListener('click', () => {
+                if (showingAtInput.value === '1') {
+                    showingAtInput.value = '0';
+                    showingAtText.textContent = 'Inactive on First Page';
+                    showingAtToggleKnob.style.transform = 'translateX(0)';
+                    showingAtToggle.style.backgroundColor = '#6b7280';
+                } else {
+                    showingAtInput.value = '1';
+                    showingAtText.textContent = 'Active on First Page';
+                    showingAtToggleKnob.style.transform = 'translateX(24px)';
+                    showingAtToggle.style.backgroundColor = '#22c55e';
                 }
             });
         </script>

@@ -67,11 +67,11 @@
                     <span class="px-4">Updated on: {{ $blog->updated_at->format('d-M-Y H:i') }}</span>
                 </div>
                 <div>
-                    <a href="{{ route('blogs.index') }}" class="inline-block text-blue-600 hover:underline px-2">← Back
+                    <a href="{{ route('admin.blogs.index') }}" class="inline-block text-blue-600 hover:underline px-2">← Back
                         to list</a>
-                    <a href="{{ route('blogs.edit', $blog->uuid) }}"
+                    <a href="{{ route('admin.blogs.edit', $blog->uuid) }}"
                         class="text-blue-600 hover:underline px-2">Edit</a>
-                    <form action="{{ route('blogs.destroy', $blog->uuid) }}" method="POST" class="inline-block">
+                    <form action="{{ route('admin.blogs.destroy', $blog->uuid) }}" method="POST" class="inline-block">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-blue-600 hover:underline px-2"

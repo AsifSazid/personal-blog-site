@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <!-- Title -->
@@ -35,7 +35,7 @@
                     class="mt-1 px-4 md:px-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                     <option value="">-- Select Category --</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        <option value="{{ $category->uuid }}">{{ $category->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -47,19 +47,19 @@
                     class="mt-1 px-4 md:px-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                     <option value="">-- Select Tag --</option>
                     @foreach ($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                        <option value="{{ $tag->uuid }}">{{ $tag->title }}</option>
                     @endforeach
                 </select>
             </div>
 
             <!-- Practice Area -->
             <div class="mb-4">
-                <label for="tag_id" class="block text-sm font-medium text-gray-700">Practice Area</label>
-                <select name="tag_id" id="tag_id"
+                <label for="ta$practice_id" class="block text-sm font-medium text-gray-700">Practice Area</label>
+                <select name="ta$practice_id" id="ta$practice_id"
                     class="mt-1 px-4 md:px-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                     <option value="">-- Select Area --</option>
                     @foreach ($areas as $area)
-                        <option value="{{ $area->id }}">{{ $area->title }}</option>
+                        <option value="{{ $area->uuid }}">{{ $area->title }}</option>
                     @endforeach
                 </select>
             </div>

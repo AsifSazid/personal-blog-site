@@ -14,11 +14,12 @@
     <section class="section">
         <div class="container">
             <div class="blog-filters">
-                <button class="filter-btn active">All Articles</button>
-                <button class="filter-btn">Corporate Law</button>
-                <button class="filter-btn">Real Estate</button>
-                <button class="filter-btn">Employment Law</button>
-                <button class="filter-btn">Legal Updates</button>
+                <button class="filter-btn active">সকল আর্টিক্যাল</button>
+                @foreach ($practice_areas as $practice_area)
+                    <button class="filter-btn" data-practice-id={{$practice_area->uuid}}>
+                        {{ preg_replace('/\s*\(.*\)$/', '', $practice_area->title) }}
+                    </button>
+                @endforeach
             </div>
 
             <div class="blog-grid">

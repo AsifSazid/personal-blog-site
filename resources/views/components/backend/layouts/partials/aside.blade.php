@@ -29,11 +29,11 @@
                 </a>
 
                 <div x-show="open" class="space-y-2 px-7 mt-2">
-                    <a href="{{ route('categories.index') }}"
+                    <a href="{{ route('admin.categories.index') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
                         All Categories
                     </a>
-                    <a href="{{ route('categories.create') }}"
+                    <a href="{{ route('admin.categories.create') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
                         Add Category
                     </a>
@@ -57,11 +57,11 @@
                 </a>
 
                 <div x-show="open" class="space-y-2 px-7 mt-2">
-                    <a href="{{ route('tags.index') }}"
+                    <a href="{{ route('admin.tags.index') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
                         All Tags
                     </a>
-                    <a href="{{ route('tags.create') }}"
+                    <a href="{{ route('admin.tags.create') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
                         Add Tag
                     </a>
@@ -85,11 +85,11 @@
                 </a>
 
                 <div x-show="open" class="space-y-2 px-7 mt-2">
-                    <a href="{{ route('blogs.index') }}"
+                    <a href="{{ route('admin.blogs.index') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
                         All Blogs
                     </a>
-                    <a href="{{ route('blogs.create') }}"
+                    <a href="{{ route('admin.blogs.create') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
                         Add Blog
                     </a>
@@ -97,7 +97,7 @@
             </div>
 
 
-            <a href="{{ route('practice_areas.index') }}"
+            <a href="{{ route('admin.practice_areas.index') }}"
                 class="flex items-center p-2 text-gray-600 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
@@ -107,7 +107,7 @@
                 <span class="ml-2 text-sm">Practice Area</span>
             </a>
 
-            <a href="{{ route('galleries.index') }}"
+            <a href="{{ route('admin.galleries.index') }}"
                 class="flex items-center p-2 text-gray-600 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -117,7 +117,7 @@
             </a>
 
 
-            <a href="{{ route('timelines.index') }}"
+            <a href="{{ route('admin.timelines.index') }}"
                 class="flex items-center p-2 text-gray-600 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

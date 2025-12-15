@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <form action="{{ route('galleries.update', $gallery->uuid) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.galleries.update', $gallery->uuid) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

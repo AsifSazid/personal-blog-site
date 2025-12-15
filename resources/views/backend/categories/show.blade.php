@@ -39,9 +39,9 @@
                     <span class="px-4">Updated on: {{ $category->updated_at->format('d-M-Y H:i') }}</span>
                 </div>
                 <div>
-                    <a href="{{ route('categories.index') }}" class="inline-block text-blue-600 hover:underline px-2">← Back
+                    <a href="{{ route('admin.categories.index') }}" class="inline-block text-blue-600 hover:underline px-2">← Back
                         to list</a>
-                    <a href="{{ route('categories.edit', $category->uuid) }}" class="text-blue-600 hover:underline px-2">Edit</a>
+                    <a href="{{ route('admin.categories.edit', $category->uuid) }}" class="text-blue-600 hover:underline px-2">Edit</a>
                     <button class="text-blue-600 hover:underline px-2">Delete</button>
                 </div>
             </div>
