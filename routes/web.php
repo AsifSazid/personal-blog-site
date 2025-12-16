@@ -38,6 +38,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
 // frontend starts
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
+Route::get('/blogs/{uuid}', [BlogController::class, 'frontendShow'])->name('blogs.show');
 
 Route::get('/about-me', function () {
     return view('about-me');

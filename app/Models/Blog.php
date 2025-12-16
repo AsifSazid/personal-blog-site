@@ -18,7 +18,7 @@ class Blog extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'blog_category');
+        return $this->belongsTo(Category::class, 'blog_category');
     }
 
     public function tags()
@@ -26,8 +26,8 @@ class Blog extends Model
         return $this->belongsToMany(Tag::class, 'blog_tag');
     }
 
-    public function practiceAreas()
+    public function practiceArea()
     {
-        return $this->belongsToMany(PracticeArea::class, 'blog_practice_area');
+        return $this->belongsTo(PracticeArea::class, 'practice_id');
     }
 }

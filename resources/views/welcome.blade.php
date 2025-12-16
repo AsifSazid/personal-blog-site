@@ -75,18 +75,22 @@
             </div>
             <div class="blog-grid">
                 <!-- Blog Card 1 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Corporate Law</span>
-                        <h3 class="blog-title">New Amendments in Corporate Governance</h3>
-                        <p class="blog-excerpt">Understanding the latest changes in corporate compliance requirements
-                            and how they affect your business...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 15, 2023</span>
-                            <span class="blog-readtime">5 min read</span>
-                        </div>
-                    </div>
-                </article>
+                @foreach ($blogs as $blog)
+                    <a href="{{route('blogs.show', $blog->uuid)}}" style="text-decoration: none;">
+                        <article class="blog-card">
+                            <div class="blog-card-content">
+                                <span class="blog-category">{{ $blog->practiceArea->title }}</span>
+                                <h3 class="blog-title">{{ $blog->title }}</h3>
+                                <p class="blog-excerpt">{{ shortContent($blog->content) }}...</p>
+                                <div class="blog-meta">
+                                    <span class="blog-date">{{ banglaDate($blog->created_at) }}</span>
+                                    <span class="blog-readtime">{{ readingTime($blog->content) }}</span>
+                                </div>
+                            </div>
+                        </article>
+
+                    </a>
+                @endforeach
                 <!-- More blog cards... -->
             </div>
         </div>

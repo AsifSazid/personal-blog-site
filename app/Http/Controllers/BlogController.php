@@ -30,9 +30,13 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'category_id' => 'nullable|exists:categories,id',
-            'tag_id' => 'nullable|exists:tags,id',
         ]);
+
+        $tags = $request->tag_id;
+        $category = Category::where('uuid', $request->category_id)->first();
+        $practice = PracticeArea::where('uuid', $request->practice_id)->first();
+
+        // dd($category, $practice);
 
         $blog = Blog::create([
             'uuid' => (string) \Str::uuid(),
@@ -40,9 +44,11 @@ class BlogController extends Controller
             'slug' => \Str::slug($request->title),
             'description' => $request->description,
             'content' => $request->content,
-            'category_id' => $request->category_id,
-            'tag_id' => $request->tag_id,
-            'practice_id' => $request->practice_id,
+            'category_id' => $category->id,
+            'category_uuid' => $request->category_id,
+            'tag_uuid' => json_encode($tags),
+            'practice_id' => $practice->id,
+            'practice_uuid' => $request->practice_id,
             'status' => $request->status ?? 1,
             'remarks' => $request->remarks,
         ]);
@@ -57,7 +63,7 @@ class BlogController extends Controller
             ]);
         }
 
-        return redirect()->route('blogs.index')->with('success', 'Blog created successfully!');
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog created successfully!');
     }
 
     public function show($uuid)
@@ -80,17 +86,24 @@ class BlogController extends Controller
         $blog = Blog::where('uuid', $uuid)->firstOrFail();
         $request->validate([
             'title' => 'required|string',
-            'category_id' => 'nullable|exists:categories,id',
-            'tag_id' => 'nullable|exists:tags,id',
         ]);
+
+        $tags = $request->tag_id;
+        $category = Category::where('uuid', $request->category_id)->first();
+        $practice = PracticeArea::where('uuid', $request->practice_id)->first();
+
+        // dd($category, $practice);
 
         $blog->update([
             'title' => $request->title,
             'slug' => \Str::slug($request->title),
             'description' => $request->description,
             'content' => $request->content,
-            'category_id' => $request->category_id,
-            'tag_id' => $request->tag_id,
+            'category_id' => $category->id,
+            'category_uuid' => $request->category_id,
+            'tag_uuid' => json_encode($tags),
+            'practice_id' => $practice->id,
+            'practice_uuid' => $request->practice_id,
             'status' => $request->status ?? 1,
             'remarks' => $request->remarks,
         ]);
@@ -122,14 +135,14 @@ class BlogController extends Controller
         }
 
 
-        return redirect()->route('blogs.index')->with('success', 'Blog updated successfully!');
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully!');
     }
 
     public function destroy($uuid)
     {
         $blog = Blog::where('uuid', $uuid)->firstOrFail();
         $blog->delete();
-        return redirect()->route('blogs.index')->with('success', 'Blog moved to trash.');
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog moved to trash.');
     }
 
     public function trash()
@@ -142,14 +155,14 @@ class BlogController extends Controller
     {
         $blog = Blog::onlyTrashed()->where('uuid', $uuid)->firstOrFail();
         $blog->restore();
-        return redirect()->route('blogs.trash')->with('success', 'Blog restored successfully.');
+        return redirect()->route('admin.blogs.trash')->with('success', 'Blog restored successfully.');
     }
 
     public function forceDelete($uuid)
     {
         $blog = Blog::onlyTrashed()->where('uuid', $uuid)->firstOrFail();
         $blog->forceDelete();
-        return redirect()->route('blogs.trash')->with('success', 'Blog permanently deleted.');
+        return redirect()->route('admin.blogs.trash')->with('success', 'Blog permanently deleted.');
     }
 
     public function getData(Request $request)
@@ -197,4 +210,10 @@ class BlogController extends Controller
     //     return $file_name; // just return file name, path is images/blogs/...
 
     // }
+
+    public function frontendShow($uuid)
+    {
+        $blog = Blog::where('uuid', $uuid)->firstOrFail();
+        return view('blog-details', compact('blog'));
+    }
 }

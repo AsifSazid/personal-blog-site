@@ -35,7 +35,7 @@ class CategoryController extends Controller
                 'remarks' => $request->remarks,
             ]);
 
-            return redirect()->route('categories.index')->with('success', 'Category created successfully!');
+            return redirect()->route('admin.categories.index')->with('success', 'Category created successfully!');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -70,7 +70,7 @@ class CategoryController extends Controller
                 'updated_by' => Auth::id(),
             ]);
 
-            return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
+            return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully!');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -80,7 +80,7 @@ class CategoryController extends Controller
     {
         $category = Category::where('uuid', $uuid)->firstOrFail();
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category moved to trash.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category moved to trash.');
     }
 
     public function trash()
@@ -93,14 +93,14 @@ class CategoryController extends Controller
     {
         $category = Category::onlyTrashed()->where('uuid', $uuid)->firstOrFail();
         $category->restore();
-        return redirect()->route('categories.trash')->with('success', 'Category restored successfully.');
+        return redirect()->route('admin.categories.trash')->with('success', 'Category restored successfully.');
     }
 
     public function forceDelete($uuid)
     {
         $category = Category::onlyTrashed()->where('uuid', $uuid)->firstOrFail();
         $category->forceDelete();
-        return redirect()->route('categories.trash')->with('success', 'Category permanently deleted.');
+        return redirect()->route('admin.categories.trash')->with('success', 'Category permanently deleted.');
     }
 
     public function getData(Request $request)

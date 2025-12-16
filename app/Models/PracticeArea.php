@@ -13,6 +13,6 @@ class PracticeArea extends Model
 
     public function blogs()
     {
-        return $this->belongsToMany(Blog::class, 'blog_area');
+        return $this->hasMany(Blog::class, 'blog_area');
     }
 }

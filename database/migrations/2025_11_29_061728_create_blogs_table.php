@@ -21,13 +21,14 @@ return new class extends Migration
             $table->boolean('status')->default(1);
             $table->text('remarks')->nullable();
 
-            $table->unsignedBigInteger('tag_id')->nullable();
+            $table->text('tag_uuid')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('practice_id')->nullable();
+            $table->string('category_uuid', 36)->nullable();
+            $table->string('practice_uuid', 36)->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('practice_id')->references('id')->on('practice_areas')->onDelete('cascade');
         });

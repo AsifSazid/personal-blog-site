@@ -11,7 +11,8 @@ class HomeController extends Controller
     public function index()
     {
         $p_areas = PracticeArea::where('showing_at', '1')->get();
-        return view('welcome', compact('p_areas'));
+        $blogs = Blog::orderBy('created_at', 'desc')->limit(3)->get();
+        return view('welcome', compact('p_areas', 'blogs'));
     }
 
     public function blogs()

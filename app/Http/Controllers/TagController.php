@@ -35,7 +35,7 @@ class TagController extends Controller
                 'remarks' => $request->remarks,
             ]);
 
-            return redirect()->route('tags.index')->with('success', 'Tag created successfully!');
+            return redirect()->route('admin.tags.index')->with('success', 'Tag created successfully!');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -70,7 +70,7 @@ class TagController extends Controller
                 'updated_by' => Auth::id(),
             ]);
 
-            return redirect()->route('tags.index')->with('success', 'Tag updated successfully!');
+            return redirect()->route('admin.tags.index')->with('success', 'Tag updated successfully!');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -80,7 +80,7 @@ class TagController extends Controller
     {
         $tag = Tag::where('uuid', $uuid)->firstOrFail();
         $tag->delete();
-        return redirect()->route('tags.index')->with('success', 'Tag moved to trash.');
+        return redirect()->route('admin.tags.index')->with('success', 'Tag moved to trash.');
     }
 
     public function trash()
@@ -93,14 +93,14 @@ class TagController extends Controller
     {
         $tag = Tag::onlyTrashed()->where('uuid', $uuid)->firstOrFail();
         $tag->restore();
-        return redirect()->route('tags.trash')->with('success', 'Tag restored successfully.');
+        return redirect()->route('admin.tags.trash')->with('success', 'Tag restored successfully.');
     }
 
     public function forceDelete($uuid)
     {
         $tag = Tag::onlyTrashed()->where('uuid', $uuid)->firstOrFail();
         $tag->forceDelete();
-        return redirect()->route('tags.trash')->with('success', 'Tag permanently deleted.');
+        return redirect()->route('admin.tags.trash')->with('success', 'Tag permanently deleted.');
     }
 
     public function getData(Request $request)
