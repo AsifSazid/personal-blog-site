@@ -171,7 +171,6 @@
                     const quill = new Quill(editorDiv, {
                         theme: 'snow',
                         modules: {
-                            container: '#toolbar',
                             toolbar: [
                                 [{
                                     'font': []

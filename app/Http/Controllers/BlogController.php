@@ -36,8 +36,6 @@ class BlogController extends Controller
         $category = Category::where('uuid', $request->category_id)->first();
         $practice = PracticeArea::where('uuid', $request->practice_id)->first();
 
-        // dd($category, $practice);
-
         $blog = Blog::create([
             'uuid' => (string) \Str::uuid(),
             'title' => $request->title,
