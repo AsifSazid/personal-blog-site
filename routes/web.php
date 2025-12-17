@@ -46,6 +46,7 @@ Route::get('/blogs/{uuid}', [BlogController::class, 'frontendShow'])->name('blog
 Route::get('/practice-areas', function () {
     return view('practice-areas');
 })->name('practice-areas');
+
 Route::get('/about-me', function () {
     return view('under-construction');
     // return view('about-me');
@@ -54,6 +55,19 @@ Route::get('/contact', function () {
     return view('under-construction');
     // return view('contact');
 })->name('contact');
+
+Route::get('/privacy', function () {
+    return view('under-construction');
+    // return view('privacy');
+})->name('privacy');
+Route::get('/terms', function () {
+    return view('under-construction');
+    // return view('terms');
+})->name('terms');
+Route::get('/disclaimer', function () {
+    return view('under-construction');
+    // return view('disclaimer');
+})->name('disclaimer');
 // frontend ends
 
 Route::get('/backend', function () {

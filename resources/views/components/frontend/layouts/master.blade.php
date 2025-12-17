@@ -34,8 +34,7 @@
                         class="{{ request()->routeIs('practice-areas') ? 'active' : '' }}">আইনি সেবাসমূহ</a>
                     <a href="{{ route('about-me') }}"
                         class="{{ request()->routeIs('about-me') ? 'active' : '' }}">পরিচিতি</a>
-                    <a href="{{ route('blogs') }}"
-                        class="{{ request()->routeIs('blogs') ? 'active' : '' }}">ব্লগ</a>
+                    <a href="{{ route('blogs') }}" class="{{ request()->routeIs('blogs') ? 'active' : '' }}">ব্লগ</a>
                     <a href="{{ route('contact') }}"
                         class="contact-cta {{ request()->routeIs('contact') ? 'active' : '' }}">
                         <i class="fas fa-phone"></i>
@@ -104,9 +103,9 @@
                 <h2>আপনার অধিকার রক্ষার জন্য প্রস্তুত?</h2>
                 <p>আপনার আইনি প্রয়োজনগুলি আলোচনা করতে একটি গোপন পরামর্শের সময় নির্ধারণ করুন এবং দেখুন আমরা কীভাবে আপনাকে
                     লক্ষ্য অর্জনে সাহায্য করতে পারি।</p>
-                <a href="/contact" class="btn btn-outline">
+                <a href="tel:+8801926560841" class="btn btn-outline">
                     <i class="fas fa-phone"></i>
-                    এখন কল করুন: (555) 123-4567
+                    এখন কল করুন: +৮৮০ ১৯২৬ ৫৬০ ৮৪১
                 </a>
             </div>
         </div>
@@ -135,15 +134,15 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>১২৩ লিগ্যাল অ্যাভিনিউ, স্যুট ৫০০, নিউইয়র্ক, এনওয়াই ১০০০১</span>
+                            <span>ঠিকানাঃ ঊত্তরা, ঢাকা, বাংলাদেশ</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>(৫৫৫) ১২৩-৪৫৬৭</span>
+                            <span>+৮৮০ ১৯২৬ ৫৬০ ৮৪১</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>john.doe@legalcounsel.com</span>
+                            <span>nazmul.hossain.lawcu@gmail.com</span>
                         </div>
                     </div>
 
@@ -185,20 +184,19 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="/">হোম</a></li>
-                        <li><a href="/about">পরিচিতি</a></li>
-                        <li><a href="/cases">কেইস স্ট্যাডি</a></li>
-                        <li><a href="/blog">ব্লগস</a></li>
-                        <li><a href="/contact">যোগাযোগ</a></li>
+                        <li><a href="{{route('home')}}">হোম</a></li>
+                        <li><a href="{{route('about-me')}}">পরিচিতি</a></li>
+                        <li><a href="{{route('blogs')}}">ব্লগস</a></li>
+                        <li><a href="{{route('contact')}}">যোগাযোগ</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>আইনগত তথ্য</h3>
                     <ul class="footer-links">
-                        <li><a href="/privacy">গোপনীয়তা নীতি</a></li>
-                        <li><a href="/terms">সেবার শর্তাবলী</a></li>
-                        <li><a href="/disclaimer">দায়মুক্তি ঘোষণা</a></li>
+                        <li><a href="{{route('privacy')}}">গোপনীয়তা নীতি</a></li>
+                        <li><a href="{{route('terms')}}">সেবার শর্তাবলী</a></li>
+                        <li><a href="{{route('disclaimer')}}">দায়মুক্তি ঘোষণা</a></li>
                     </ul>
                 </div>
 
