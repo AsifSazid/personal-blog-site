@@ -67,35 +67,37 @@
         </div>
     </section>
 
-    <!-- Blogs/Blog Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">ব্লগ</span>
-                <h2 class="section-title">সর্বশেষ আইনি প্রবন্ধ</h2>
-                <p class="section-subtitle">আইন সংক্রান্ত সাম্প্রতিক খবর, বিশ্লেষণ ও পরামর্শ</p>
-            </div>
-            <div class="blog-grid">
-                <!-- Blog Card 1 -->
-                @foreach ($blogs as $blog)
-                    <a href="{{ route('blogs.show', $blog->uuid) }}" style="text-decoration: none;">
-                        <article class="blog-card">
-                            <div class="blog-card-content">
-                                <span class="blog-category">{{ $blog->practiceArea->title }}</span>
-                                <h3 class="blog-title">{{ $blog->title }}</h3>
-                                <p class="blog-excerpt">{{ shortContent($blog->content) }}...</p>
-                                <div class="blog-meta">
-                                    <span class="blog-date">{{ banglaDate($blog->created_at) }}</span>
-                                    <span class="blog-readtime">{{ readingTime($blog->content) }}</span>
+    @isset($blogs)
+        <!-- Blogs/Blog Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">ব্লগ</span>
+                    <h2 class="section-title">সর্বশেষ আইনি প্রবন্ধ</h2>
+                    <p class="section-subtitle">আইন সংক্রান্ত সাম্প্রতিক খবর, বিশ্লেষণ ও পরামর্শ</p>
+                </div>
+                <div class="blog-grid">
+                    <!-- Blog Card 1 -->
+                    @foreach ($blogs as $blog)
+                        <a href="{{ route('blogs.show', $blog->uuid) }}" style="text-decoration: none;">
+                            <article class="blog-card">
+                                <div class="blog-card-content">
+                                    <span class="blog-category">{{ $blog->practiceArea->title }}</span>
+                                    <h3 class="blog-title">{{ $blog->title }}</h3>
+                                    <p class="blog-excerpt">{{ shortContent($blog->content) }}...</p>
+                                    <div class="blog-meta">
+                                        <span class="blog-date">{{ banglaDate($blog->created_at) }}</span>
+                                        <span class="blog-readtime">{{ readingTime($blog->content) }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                    </a>
-                @endforeach
-                <!-- More blog cards... -->
+                            </article>
+                        </a>
+                    @endforeach
+                    <!-- More blog cards... -->
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endisset
 
     <!-- Case Studies -->
     {{-- <section class="section" style="background: var(--surface);">
