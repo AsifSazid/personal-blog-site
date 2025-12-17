@@ -25,7 +25,7 @@
                     <a href="/blogs?uuid={{$p_area->uuid}}" style="text-decoration: none;">
                         <div class="practice-card">
                             <div class="practice-icon">
-                                {!! $p_area->icon !!}
+                                <i class="{!! $p_area->icon !!}"></i>
                             </div>
                             <h3 class="practice-title">{{ $p_area->title }}</h3>
                             <p class="practice-description">{{ $p_area->description }}</p>
