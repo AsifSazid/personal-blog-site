@@ -3,7 +3,7 @@
 
 <head>
     <x-backend.layouts.partials.meta />
-    <x-backend.layouts.partials.title :title={{ __('TravHub Global Limited') }} />
+    <x-backend.layouts.partials.title :title={{ __('গাজী নাজমুল হোসেন') }} />
     <x-backend.layouts.partials.favicon />
     <x-backend.layouts.libs.style />
     @stack('css')
