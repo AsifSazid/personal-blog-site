@@ -60,11 +60,11 @@
 
                     <!-- Case Highlight -->
                     @isset($blog->remarks)
-                    <div class="case-highlight">
-                        <div class="case-study">
-                            <span class="result-detail"> {!! $blog->remarks !!}</span>
+                        <div class="case-highlight">
+                            <div class="case-study">
+                                <span class="result-detail"> {!! $blog->remarks !!}</span>
+                            </div>
                         </div>
-                    </div>
                     @endisset
 
                     &nbsp;
@@ -108,52 +108,28 @@
     <section class="section" style="background: var(--surface);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Related Legal Insights</h2>
-                <p class="section-subtitle">Latest articles and updates on corporate law</p>
+                <h2 class="section-title">{{ __('এ সম্পর্কিত আরো ব্লগ দেখুন') }}</h2>
+                <p class="section-subtitle">{{ __('সংশ্লিষ্ট বিষয়ের সাম্প্রতিক প্রবন্ধ ও নিবন্ধসমূহ') }}</p>
             </div>
 
             <div class="blog-grid">
-                <!-- Blog Card 1 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Corporate Law</span>
-                        <h3 class="blog-title">New Corporate Compliance Requirements 2023</h3>
-                        <p class="blog-excerpt">Understanding the latest regulatory changes affecting businesses and how
-                            to ensure compliance...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 15, 2023</span>
-                            <span class="blog-readtime">5 min read</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Card 2 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Corporate Law</span>
-                        <h3 class="blog-title">Merger & Acquisition Best Practices</h3>
-                        <p class="blog-excerpt">Key legal considerations for successful business mergers and
-                            acquisitions in today's market...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 10, 2023</span>
-                            <span class="blog-readtime">7 min read</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Card 3 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Corporate Law</span>
-                        <h3 class="blog-title">Protecting Shareholder Rights</h3>
-                        <p class="blog-excerpt">Legal framework and strategies for protecting shareholder interests in
-                            corporate decisions...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 5, 2023</span>
-                            <span class="blog-readtime">6 min read</span>
-                        </div>
-                    </div>
-                </article>
+                @foreach ($relatedBlogs as $relatedBlog)
+                    <!-- Blog Card 1 -->
+                    <a href="{{ route('blogs.show', $relatedBlog->uuid) }}" style="text-decoration: none;">
+                        <article class="blog-card">
+                            <div class="blog-card-content">
+                                <span class="blog-category">{{ $relatedBlog->practiceArea->title }}</span>
+                                <h3 class="blog-title">{{ $relatedBlog->title }}</h3>
+                                <p class="blog-excerpt">{{ shortContent($relatedBlog->content) }}......</p>
+                                <div class="blog-meta">
+                                    <span
+                                        class="blog-date">{{ \App\Helpers\BanglaDateHelper::shortBanglaDate($blog->created_at) }}</span>
+                                    <span class="blog-readtime">{{ readingTime($blog->content) }}</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>

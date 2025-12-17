@@ -7,7 +7,7 @@ function companyName()
 
 function clientCompanyName()
 {
-    return "Nazmul";
+    return "গাজী নাজমুল হোসেন";
 }
 
 if (!function_exists('banglaDate')) {

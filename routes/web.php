@@ -23,6 +23,9 @@ Route::prefix('admin/')->name('admin.')->group(function () {
     // blogs
     Route::get('/blogs/list', [BlogController::class, 'getData'])->name('blogs.getData');
     Route::get('/blogs/trash', [BlogController::class, 'trash'])->name('blogs.trash');
+    Route::get('/blogs/download/pdf', [BlogController::class, 'downloadPdf'])->name('blogs.download.pdf');
+    Route::post('/blogs/{id}/restore', [BlogController::class, 'restore'])->name('blogs.restore');
+    Route::delete('/blogs/{id}/force-delete', [BlogController::class, 'forceDelete'])->name('blogs.forceDelete');
     // galleries
     Route::get('/galleries/list', [GalleryController::class, 'getData'])->name('galleries.getData');
     Route::get('/galleries/trash', [GalleryController::class, 'trash'])->name('galleries.trash');
@@ -40,17 +43,16 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
 Route::get('/blogs/{uuid}', [BlogController::class, 'frontendShow'])->name('blogs.show');
 
-Route::get('/about-me', function () {
-    return view('about-me');
-})->name('about-me');
 Route::get('/practice-areas', function () {
     return view('practice-areas');
 })->name('practice-areas');
-Route::get('/practice-area-details', function () {
-    return view('practice-area-details');
-})->name('practice-area-details');
+Route::get('/about-me', function () {
+    return view('under-construction');
+    // return view('about-me');
+})->name('about-me');
 Route::get('/contact', function () {
-    return view('contact');
+    return view('under-construction');
+    // return view('contact');
 })->name('contact');
 // frontend ends
 
@@ -58,9 +60,8 @@ Route::get('/backend', function () {
     return view('components.backend.layouts.master');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+// Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -68,4 +69,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

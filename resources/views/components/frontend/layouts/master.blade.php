@@ -54,7 +54,7 @@
 
 
     <!-- Testimonials -->
-    <section class="section testimonials">
+    {{-- <section class="section testimonials">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">ক্লায়েন্টের মতামত</span>
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
     <!-- CTA Section -->

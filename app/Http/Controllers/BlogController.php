@@ -214,6 +214,12 @@ class BlogController extends Controller
     public function frontendShow($uuid)
     {
         $blog = Blog::where('uuid', $uuid)->firstOrFail();
-        return view('blog-details', compact('blog'));
+
+        $relatedBlogs = Blog::where('practice_uuid', $blog->practice_uuid)
+            ->where('uuid', '!=', $blog->uuid) // বর্তমান ব্লগ বাদ
+            ->limit(3)
+            ->get();
+
+        return view('blog-details', compact('blog', 'relatedBlogs'));
     }
 }

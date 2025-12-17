@@ -16,7 +16,27 @@
 <link href="{{ asset('ui/fontawesome-7.1.0/css/solid.css') }}" rel="stylesheet" />
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&family=Inter&family=Lora&family=Montserrat&family=Courier+Prime&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&family=Inter&family=Lora&family=Montserrat&family=Courier+Prime&display=swap"
+    rel="stylesheet">
 
-{{-- <link href="{{ asset('build/fontawesome-7.1.0/css/sharp-thin.css') }}" rel="stylesheet" />
-  <link href="{{ asset('build/fontawesome-7.1.0/css/sharp-duotone-thin.css') }}" rel="stylesheet" /> --}}
+<style>
+    * {
+        font-family: 'SolaimanLipi', 'Kalpurush', Arial, sans-serif;
+    }
+
+    /* বাংলা ফন্ট */
+    @font-face {
+        font-family: 'Kalpurush';
+        src: url('/fonts/Kalpurush.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'SolaimanLipi';
+        src: url('/fonts/SolaimanLipi.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+</style>

@@ -16,105 +16,115 @@
             <div class="blog-filters">
                 <button class="filter-btn active">সকল আর্টিক্যাল</button>
                 @foreach ($practice_areas as $practice_area)
-                    <button class="filter-btn" data-practice-id={{$practice_area->uuid}}>
+                    <button class="filter-btn" data-practice-id={{ $practice_area->uuid }}>
                         {{ preg_replace('/\s*\(.*\)$/', '', $practice_area->title) }}
                     </button>
                 @endforeach
             </div>
 
-            <div class="blog-grid">
-                <!-- Blog Card 1 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Corporate Law</span>
-                        <h3 class="blog-title">Understanding New Corporate Compliance Regulations 2023</h3>
-                        <p class="blog-excerpt">Recent changes in corporate governance requirements and how they impact
-                            businesses of all sizes. Learn about compliance deadlines and best practices...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 15, 2023</span>
-                            <span class="blog-readtime">5 min read</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Card 2 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Real Estate</span>
-                        <h3 class="blog-title">Legal Checklist for Property Purchase in 2023</h3>
-                        <p class="blog-excerpt">Essential legal considerations and documentation required for safe
-                            property transactions. Avoid common pitfalls in real estate deals...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 12, 2023</span>
-                            <span class="blog-readtime">6 min read</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Card 3 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Employment Law</span>
-                        <h3 class="blog-title">Remote Work Policies: Legal Requirements</h3>
-                        <p class="blog-excerpt">With the rise of remote work, understand the legal obligations for
-                            employers and rights of employees in hybrid work environments...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 8, 2023</span>
-                            <span class="blog-readtime">4 min read</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Card 4 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Legal Updates</span>
-                        <h3 class="blog-title">Supreme Court Recent Judgment Analysis</h3>
-                        <p class="blog-excerpt">Breaking down the implications of recent Supreme Court decisions on
-                            business contracts and commercial disputes...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 5, 2023</span>
-                            <span class="blog-readtime">8 min read</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Card 5 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Corporate Law</span>
-                        <h3 class="blog-title">Merger & Acquisition Due Diligence Guide</h3>
-                        <p class="blog-excerpt">Comprehensive guide to legal due diligence process in business mergers
-                            and acquisitions. Key documents and risk assessment...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">May 1, 2023</span>
-                            <span class="blog-readtime">7 min read</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Card 6 -->
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <span class="blog-category">Intellectual Property</span>
-                        <h3 class="blog-title">Protecting Your Brand: Trademark Basics</h3>
-                        <p class="blog-excerpt">Essential information about trademark registration, protection, and
-                            enforcement for businesses and entrepreneurs...</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">April 28, 2023</span>
-                            <span class="blog-readtime">5 min read</span>
-                        </div>
-                    </div>
-                </article>
+            <div class="blog-grid" id="blog-container">
+                @include('components.frontend.layouts.partials.blog_list', ['blogs' => $blogs])
             </div>
 
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link">Next</a>
+            <div class="text-center mt-4">
+                <button id="load-more-btn" class="btn btn-primary" style="{{ $totalBlogs > 12 ? '' : 'display:none;' }}"
+                    data-offset="12">
+                    আরো দেখুন (Load More)
+                </button>
             </div>
         </div>
     </section>
+
+    @push('js')
+        @push('js')
+            <script>
+                const blogContainer = document.getElementById('blog-container');
+                const loadMoreBtn = document.getElementById('load-more-btn');
+                let currentUuid = new URLSearchParams(window.location.search).get('uuid') || '';
+
+                // ১. ফিল্টার বাটন হ্যান্ডলিং
+                document.querySelectorAll('.filter-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        currentUuid = this.getAttribute('data-practice-id') || '';
+
+                        // UI Update
+                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // রিসেট এবং নতুন ডাটা ফেচ
+                        fetchBlogs(0, true);
+                    });
+                });
+
+                // ২. লোড মোর বাটন হ্যান্ডলিং
+                loadMoreBtn.addEventListener('click', function() {
+                    const offset = this.getAttribute('data-offset');
+                    fetchBlogs(offset, false);
+                });
+
+                function fetchBlogs(offset, isFilter = false) {
+                    loadMoreBtn.innerText = 'লোড হচ্ছে...';
+
+                    const url = `/blogs?uuid=${currentUuid}&offset=${offset}`;
+
+                    fetch(url, {
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (isFilter) {
+                                blogContainer.innerHTML = data.html; // ফিল্টার করলে আগেরগুলো মুছে যাবে
+                                loadMoreBtn.setAttribute('data-offset', 12);
+                            } else {
+                                blogContainer.insertAdjacentHTML('beforeend', data.html); // লোড মোর করলে নিচে যুক্ত হবে
+                                loadMoreBtn.setAttribute('data-offset', parseInt(offset) + 6);
+                            }
+
+                            // বাটন দেখানো বা লুকানো
+                            loadMoreBtn.style.display = data.hasMore ? 'inline-block' : 'none';
+                            loadMoreBtn.innerText = 'আরো দেখুন (Load More)';
+
+                            // URL আপডেট (রিলোড ছাড়াই)
+                            const newUrl = currentUuid ? `/blogs?uuid=${currentUuid}` : '/blogs';
+                            window.history.pushState({}, '', newUrl);
+                        });
+                }
+
+                document.querySelectorAll('.filter-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const uuid = this.getAttribute('data-practice-id');
+
+                        // নতুন URL তৈরি করা
+                        let url = new URL(window.location.href);
+
+                        if (uuid) {
+                            // যদি uuid থাকে তবে সেটা সেট করো
+                            url.searchParams.set('uuid', uuid);
+                        } else {
+                            // "সকল আর্টিক্যাল" বাটনের জন্য uuid রিমুভ করো
+                            url.searchParams.delete('uuid');
+                        }
+
+                        // পেজ রিডাইরেক্ট করা
+                        window.location.href = url.toString();
+                    });
+                });
+
+                // বর্তমান সিলেক্টেড বাটনে 'active' ক্লাস ধরে রাখার লজিক
+                const currentUrlParams = new URLSearchParams(window.location.search);
+                const activeUuid = currentUrlParams.get('uuid');
+
+                if (activeUuid) {
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('data-practice-id') === activeUuid) {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+            </script>
+        @endpush
+    @endpush
 </x-frontend.layouts.master>

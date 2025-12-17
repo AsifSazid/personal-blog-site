@@ -27,6 +27,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'SolaimanLipi', 'Kalpurush', Arial, sans-serif;
         }
 
         /* বাংলা ফন্ট */
@@ -388,6 +389,7 @@
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            height: 360px;
         }
 
         .practice-card:hover {
@@ -727,6 +729,7 @@
             padding: 2rem;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            height: 450px;
         }
 
         .blog-card:hover {
@@ -1189,6 +1192,10 @@
 
             .contact-icon {
                 align-self: center;
+            }
+
+            .blog-card {
+                height: 620px;
             }
         }
 

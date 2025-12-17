@@ -22,14 +22,16 @@
 
             <div class="practice-grid">
                 @foreach ($practice_areas as $key => $p_area)
-                    <div class="practice-card">
-                        <div class="practice-icon">
-                            {!! $p_area->icon !!}
+                    <a href="/blogs?uuid={{$p_area->uuid}}" style="text-decoration: none;">
+                        <div class="practice-card">
+                            <div class="practice-icon">
+                                {!! $p_area->icon !!}
+                            </div>
+                            <h3 class="practice-title">{{ $p_area->title }}</h3>
+                            <p class="practice-description">{{ $p_area->description }}</p>
+                            {{ __('ব্লগ দেখুন') }}
                         </div>
-                        <h3 class="practice-title">{{$p_area->title}}</h3>
-                        <p class="practice-description">{{$p_area->description}}</p>
-                        <a href="/corporate-law" class="btn-secondary">আরো জানুন</a>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>

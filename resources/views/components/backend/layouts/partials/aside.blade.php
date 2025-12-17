@@ -9,7 +9,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11v10a1 1 0 001 1h3m-9 0h-2M9 21h6" />
                 </svg>
-                <span class="ml-2 text-sm">Dashboard</span>
+                <span class="ml-2 text-sm">{{ __('ড্যাশবোর্ড') }}</span>
             </a>
 
 
@@ -21,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5 8h14M5 12h14M5 16h14" />
                     </svg>
-                    <span class="ml-2 text-sm">Blog Categories</span>
+                    <span class="ml-2 text-sm">{{ __('ব্লগ ক্যাটেগরি') }}</span>
                     <svg class="w-4 h-4 ml-auto transition-transform transform" :class="{ 'rotate-180': open }"
                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -31,11 +31,11 @@
                 <div x-show="open" class="space-y-2 px-7 mt-2">
                     <a href="{{ route('admin.categories.index') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
-                        All Categories
+                        {{ __('সকল ক্যাটেগরি') }}
                     </a>
                     <a href="{{ route('admin.categories.create') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
-                        Add Category
+                        {{ __('নতুন ক্যাটেগরি বানান') }}
                     </a>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M7 7h.01M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4z" />
                     </svg>
-                    <span class="ml-2 text-sm">Blog Tags</span>
+                    <span class="ml-2 text-sm">{{ __('ব্লগ ট্যাগ') }}</span>
                     <svg class="w-4 h-4 ml-auto transition-transform transform" :class="{ 'rotate-180': open }"
                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -59,11 +59,11 @@
                 <div x-show="open" class="space-y-2 px-7 mt-2">
                     <a href="{{ route('admin.tags.index') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
-                        All Tags
+                        {{ __('সকল ট্যাগ') }}
                     </a>
                     <a href="{{ route('admin.tags.create') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
-                        Add Tag
+                        {{ __('নতুন ট্যাগ বানান') }}
                     </a>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 12h6m-6 4h6m2-8H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z" />
                     </svg>
-                    <span class="ml-2 text-sm">Blogs</span>
+                    <span class="ml-2 text-sm">{{ __('ব্লগ') }}</span>
                     <svg class="w-4 h-4 ml-auto transition-transform transform" :class="{ 'rotate-180': open }"
                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -87,11 +87,11 @@
                 <div x-show="open" class="space-y-2 px-7 mt-2">
                     <a href="{{ route('admin.blogs.index') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
-                        All Blogs
+                        {{ __('সকল ব্লগ') }}
                     </a>
                     <a href="{{ route('admin.blogs.create') }}"
                         class="block p-2 text-sm hover:text-gray-700 dark:hover:text-light">
-                        Add Blog
+                        {{ __('নতুন ব্লগ বানান') }}
                     </a>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span class="ml-2 text-sm">Practice Area</span>
+                <span class="ml-2 text-sm">{{ __('সকল আইনি সেবা') }}</span>
             </a>
 
             <a href="{{ route('admin.galleries.index') }}"
@@ -113,7 +113,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-12 5h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span class="ml-2 text-sm">Gallery</span>
+                <span class="ml-2 text-sm">{{ __('গ্যালারি') }}</span>
             </a>
 
 
@@ -124,7 +124,7 @@
                         d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2" />
                 </svg>
-                <span class="ml-2 text-sm">Timeline</span>
+                <span class="ml-2 text-sm">{{ __('টাইমলাইন') }}</span>
             </a>
 
         </nav>
@@ -134,7 +134,7 @@
             {{-- <p>Logged In As: {{ Auth::user()->first_name }}</p> --}}
             <a href="{{ route('home') }}"
                 class="flex items-center justify-center w-full px-4 py-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark">
-                <span>Home Page</span>
+                <span>{{__('হোম পেইজ')}}</span>
             </a>
         </div>
 

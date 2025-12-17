@@ -52,14 +52,16 @@
             </div>
             <div class="practice-grid">
                 @foreach ($p_areas as $key => $p_area)
-                    <div class="practice-card">
-                        <div class="practice-icon">
-                            {!! $p_area->icon !!}
+                    <a href="/blogs?uuid={{ $p_area->uuid }}" style="text-decoration: none;">
+                        <div class="practice-card">
+                            <div class="practice-icon">
+                                {!! $p_area->icon !!}
+                            </div>
+                            <h3 class="practice-title">{{ $p_area->title }}</h3>
+                            <p class="practice-description">{{ $p_area->description }}</p>
+                            {{ __('ব্লগ দেখুন') }}
                         </div>
-                        <h3 class="practice-title">{{ $p_area->title }}</h3>
-                        <p class="practice-description">{{ $p_area->description }}</p>
-                        <a href="/corporate-law" class="btn-secondary">আরো জানুন</a>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -76,7 +78,7 @@
             <div class="blog-grid">
                 <!-- Blog Card 1 -->
                 @foreach ($blogs as $blog)
-                    <a href="{{route('blogs.show', $blog->uuid)}}" style="text-decoration: none;">
+                    <a href="{{ route('blogs.show', $blog->uuid) }}" style="text-decoration: none;">
                         <article class="blog-card">
                             <div class="blog-card-content">
                                 <span class="blog-category">{{ $blog->practiceArea->title }}</span>
@@ -88,7 +90,6 @@
                                 </div>
                             </div>
                         </article>
-
                     </a>
                 @endforeach
                 <!-- More blog cards... -->
@@ -97,7 +98,7 @@
     </section>
 
     <!-- Case Studies -->
-    <section class="section" style="background: var(--surface);">
+    {{-- <section class="section" style="background: var(--surface);">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">সফলতার গল্প</span>
@@ -143,7 +144,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     @push('css')
         <style>
