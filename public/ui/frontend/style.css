@@ -389,7 +389,6 @@
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
-            height: 360px;
         }
 
         .practice-card:hover {
@@ -729,7 +728,6 @@
             padding: 2rem;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
-            height: 450px;
         }
 
         .blog-card:hover {
